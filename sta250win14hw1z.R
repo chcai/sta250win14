@@ -19,4 +19,10 @@ echo $f
 cat $f | tail -n +2 | head -n -1 >> ctable.txt
 done
 
-cat tables/ctable1.txt tables2/ctable2.txt > ctable.txt
+for f in table*
+do
+echo $f
+cat $f | head -n -2 >> ctable.txt
+done
+
+cat tables/ctable.txt tables2/ctable.txt > ctable.txt
