@@ -14,7 +14,7 @@ There is an inbetween step, please see the readme file.
 
 This method took 1098.125 seconds (about 18 minutes) on the statistics server gumbel.
 
-ram = 242gb
+ram = 256gb
 cpu mhz = 2899.863
 number of processors = 32
 R 3.0.1
