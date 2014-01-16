@@ -16,7 +16,22 @@ counts = as.numeric(counts)
 arr.delay = sort(unique(table.[,2]))
 
 # get the statistics
-mean = wtd.mean(arr.delay, counts)
-sd = sqrt(wtd.var(arr.delay, counts))
+mu = wtd.mean(arr.delay, counts)
+std = sqrt(wtd.var(arr.delay, counts))
 quantiles = wtd.quantile(arr.delay, counts)
-median = quantiles[3]
+med = quantiles[3]
+
+load('time.rda')
+
+# save the results and system info
+results1 = list(time = time., 
+                results = c(mean = mu, median = med, sd = std), 
+                quantiles = quantiles, 
+                system = Sys.info(), 
+                session = sessionInfo(), 
+                ram = '242gb', 
+                num.processors = 32, 
+                cpu.mhz = 2899.863, 
+                cpu.cores = 8, 
+                os = 'SL 6.3')
+save(results1, file = 'results1.rda')
