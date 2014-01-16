@@ -17,16 +17,16 @@ I manually put the tables for 1987-2007 into one directory,
 and the others into a separate directory.
 This allows me to run the following in shell:
 
-for f in table*
-do
-echo $f
-cat $f | tail -n +2 | head -n -1 >> ctable.txt
+for f in table*;
+do;
+echo $f;
+cat $f | tail -n +2 | head -n -1 >> ctable.txt;
 done
 
-for f in table*
-do
-echo $f
-cat $f | head -n -2 >> ctable.txt
+for f in table*;
+do;
+echo $f;
+cat $f | head -n -2 >> ctable.txt;
 done
 
 The former is for 2008 and after, the latter is for pre-2008.
