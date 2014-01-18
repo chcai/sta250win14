@@ -6,6 +6,7 @@ time. = system.time({
   
   for(i in 1:length(files)) {
     file.i = paste0('data/', files[i])
+    print(file.i)
     if(i <= 21) col.name = 'ArrDelay' else col.name = 'ARR_DELAY'
     dat = read.csv(file.i, colClasses = 'character')
     table.i = table(as.integer(dat[,col.name]))
