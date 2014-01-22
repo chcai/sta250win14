@@ -1,30 +1,3 @@
-# R CMD INSTALL -l "Rlib" FastCSVSample
-# export R_LIBS="Rlib"
-# .libPaths()
-
-library(FastCSVSample) # csvSample()
-library(Hmisc) # wtd.mean(), wtd.var(), wtd.quantile()
-
-time. = system.time({
-  n = 10000
-  
-  files = list.files('data')
-  tables = list(); length(tables) = length(files)
-  
-  for(i in 1:length(files)) {
-    file.i = paste0('data/', files[i])
-    print(file.i)
-    if(i <= 21) col.num = 15 else col.num = 45
-    dat = csvSample(file.i, n)
-    dat = strsplit(dat, ',')
-    dat = t(as.data.frame(dat))
-    table.i = table(as.integer(dat[,col.num]))
-    counts = as.numeric(table.i)
-    arr.delay = as.integer(attributes(table.i)$dimnames[[1]])
-    tables[[i]] = cbind(counts, arr.delay)
-  }
-  
-  save(tables, file = 'tables.rda')
   
   table. = do.call(rbind, tables)
   
