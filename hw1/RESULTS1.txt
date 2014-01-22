@@ -7,9 +7,9 @@ mean = 6.56553, median = 0, sd = 31.54013
 
 All the files given were processed.
 
-To generate the freq tables from the given files, run everything in sta250win14hw1run.R.
+To generate the freq tables from the given files, run method1run.R.
 To get the results from ctable.txt (the concatenated and filtered freq table), 
-run everything in sta250win14hw1pro.R.
+run method1pro.R.
 There is an inbetween step, please see the readme file.
 
 This method took 1098.125 seconds (about 18 minutes) on the statistics server gumbel.
