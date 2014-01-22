@@ -10,7 +10,7 @@ table. = read.table('ctable.txt')
 # i.e. there may be (and probably will be) >1 rows of counts
 # for arrival delay 0, etc.
 # use by() to merge counts for same arrival times
-counts = by(table.[,1], table.[,2], sum, simplify=FALSE)
+counts = by(table.[,1], table.[,2], sum, simplify = FALSE)
 counts = as.numeric(counts)
 # by() sorts the arrival delays
 arr.delay = sort(unique(table.[,2]))
