@@ -13,27 +13,36 @@ method2.3.fun =
     }
     
     library(Hmisc) # wtd.mean(), wtd.var(), wtd.quantile()
-    if(method == 3) library(FastCSVSample) # csvSample()
+    if(method == 3) {
+      library(FastCSVSample) # csvSample()
+      source('sampleSize.R')
+    }
     
     time. = system.time({
       
       files = list.files(direc)
       
+      if(method == 3) {
+        sample.sizes = sample.size.fun(100000*81, direc)
+      }
+      
       tables = list(); length(tables) = length(files)
       
-      for(i in 21:22) {#1:length(files)
+      for(i in 1:length(files)) {
+        
         file.i = paste0(direc, '/', files[i])
-        if(verbose) print(file.i)
         if(i <= 21) col.num = 15 else col.num = 45
-        if(verbose) print(col.num)
+        if(verbose) {
+          print(paste0('Processing file: ', file.i, 
+                       ', column number = ', col.num))
+        }
         
         if(method == 2) {
           dat = read.csv(file.i, colClasses = 'character')
         }
         
         if(method == 3) {
-          n = 100
-          dat = csvSample(file.i, n)
+          dat = csvSample(file.i, sample.sizes[i])
           dat = strsplit(dat, ',')
           dat = t(as.data.frame(dat))
         }
@@ -58,13 +67,13 @@ method2.3.fun =
       med = quantiles[3]
     })
     
-    paste0('results', method) = 
-      list(time = time., 
-           results = c(mean = mu, median = med, sd = std), 
-           quantiles = quantiles, 
-           session = sessionInfo())
-    save(paste0('results', method), 
+    assign(paste0('results', method), 
+           list(time = time., 
+                results = c(mean = mu, median = med, sd = std), 
+                quantiles = quantiles, 
+                session = sessionInfo()))
+    save(list = paste0('results', method), 
          file = paste0('results', method, '.rda'))
   }
 
-method2.fun()
+method2.3.fun(3)
