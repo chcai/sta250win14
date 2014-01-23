@@ -1,4 +1,4 @@
-# process results from the 3 methods
+# process results from the 3 methods and plot
 
 setwd("C:/Users/Christine/Google Drive/GitHub/sta250win14/hw1")
 load('results1.rda')
@@ -16,6 +16,7 @@ med = c(results1$results[2], results2$results[2],
         results3$results[2], results4$results[2])
 sds = c(results1$results[3], results2$results[3], 
         results3$results[3], results4$results[3])
+
 png('stats.png')
 par(mfrow = c(2,2), mar = c(5+2,4,4,2))
 plot(means, type = 'b', xaxt = 'n', xlab = '', ylab = '', 
@@ -38,12 +39,8 @@ axis(1, at = 1:4,
      las = 2, cex.axis = .8)
 dev.off()
 
-for.plot = numeric(4)
-for.plot[1] = results1$time[3]
-for.plot[2] = results2$time[3]
-for.plot[3] = results3$time[3]
-for.plot[4] = results3$time[3]
-
+for.plot = c(results1$time[3], results2$time[3], 
+             results3$time[3], results4$time[3])
 for.plot.mins = for.plot/60
 
 png('speed.png')
