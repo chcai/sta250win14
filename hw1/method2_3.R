@@ -113,4 +113,4 @@ method2.3.fun =
   }
 
 # function call
-method2.3.fun(method = 3, direc = 'data', verbose = TRUE)
+# method2.3.fun(method = 3, direc = 'data', verbose = TRUE)
