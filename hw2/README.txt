@@ -10,4 +10,6 @@ gauss.sh is the shell script needed to execute gauss.R on gauss.
 
 gaussPro.R computes the desired statistics.
 
+results1.rda contains the results and system info.
+
 report.doc is a work in progress report.
