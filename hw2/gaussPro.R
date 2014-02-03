@@ -1,10 +1,11 @@
 library(Hmisc)
 
-arg = 1
-direc.out = 'output'
-file.out = paste0(direc.out, '/table', 1000+arg, '.txt')
+table. = read.table('ctable.txt')
+counts = by(table.[,2], table.[,1], sum, simplify = FALSE)
+counts = as.numeric(counts)
+arr.delay = sort(unique(table.[,1]))
 
-table.i2 = read.table(file.out)
-table.i2 = as.matrix(table.i2)
-
-wtd.mean(table.i2[,1], table.i2[,2])
+mu = wtd.mean(arr.delay, counts)
+std = sqrt(wtd.var(arr.delay, counts))
+quantiles = wtd.quantile(arr.delay, counts)
+med = quantiles[3]
