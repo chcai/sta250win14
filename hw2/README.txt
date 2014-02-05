@@ -14,9 +14,11 @@ results1.rda contains the results and system info.
 
 Method 2 is in mapReduce folder.
 
-computation time: 13.5 mins + 2 mins to copy files to hdfs
+computation time: 13.5 mins + 2 mins to copy files to hdfs.
 
-mapRedPro.R computes the desired statistics from the MapReduce output
+mapRedPro.R computes the desired statistics from the MapReduce output.
+
+results2.rda contains the results and system info.
 
 
 
