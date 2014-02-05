@@ -16,15 +16,24 @@ arg = as.numeric(command.args[1])
 files = list.files(direc)
 file.i = paste0(direc, files[arg])
 
-dat = read.csv(file.i, colClasses = 'character')
+## pre-2008 files and post-2008 files have different structures.
+if(arg <= 21) {
+  ## ignore all columns but arrival delays
+  dat = read.csv(file.i, 
+                 colClasses = c(rep('NULL', 14), 'character', 
+                                rep('NULL', 14)))
+} else {
+  dat = read.csv(file.i, 
+                 colClasses = c(rep('NULL', 42), 'character', 
+                                rep('NULL', 67)))
+}
+  
+## get freq table
+table.i = table(as.integer(dat[[1]]))
 
-## after 2007, data format changes
-if(arg <= 21) col.name = 'ArrDelay' else col.name = 'ARR_DELAY'
-
-## get freq table and write to txt file
-table.i = table(as.integer(dat[,col.name]))
-
-## if we want the freq table files to be listed in order, 
+## write freq table to txt file.
+## if we want to make sure the freq table files 
+## will be listed in order, 
 ## start with table1001.txt
 file.out = paste0(direc.out, 'table', 1000+arg, '.txt')
 write.table(table.i, file = file.out, quote = FALSE, 

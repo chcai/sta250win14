@@ -20,13 +20,13 @@ quantiles = wtd.quantile(arr.delay, counts)
 med = quantiles[3]
 
 ## save results and system info
-results1 = list(time = 3*60+31, 
+results1 = list(time = 2.5*60, 
                 results = c(mean = mu, median = med, sd = std), 
                 quantiles = quantiles, 
                 system = Sys.info(), 
                 session = sessionInfo(), 
-                ram = '64gb', 
-                num.processors = 32, 
+                ram = '768gb', 
+                num.processors = 12*32, 
                 cpu.mhz = 1400, 
                 cpu.cores = 8, 
                 os = 'Ubuntu 12.04')
