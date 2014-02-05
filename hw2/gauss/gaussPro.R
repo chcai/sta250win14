@@ -1,5 +1,5 @@
 ## this script reads in the concatenated freq table, 
-## sums the counts for any duplicated arrival delays, 
+## sums (merges) the counts for any duplicated arrival delays, 
 ## and calculates the desired statistics
 
 library(Hmisc) ## wtd.stats()
@@ -26,8 +26,8 @@ results1 = list(time = 2.5*60,
                 system = Sys.info(), 
                 session = sessionInfo(), 
                 ram = '768gb', 
-                num.processors = 12*32, 
+                num.nodes = 12, 
                 cpu.mhz = 1400, 
-                cpu.cores = 8, 
+                cpu.cores = 32, 
                 os = 'Ubuntu 12.04')
 save(results1, file = 'results1.rda')

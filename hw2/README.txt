@@ -1,10 +1,8 @@
-I chose to use read.csv() on gauss. Each job reads one file and writes a frequency table to a txt file. It took
+Method 1 is in gauss folder.
 
-3 mins 31 secs
+computation time: 2.5 mins.
 
-to make all the frequency tables. And another few seconds to get the desired statistics.
-
-gauss.R reads a csv file and makes a frequency table.
+gauss.R reads a csv file (ignoring all cols but arrival delays through colClasses) and makes a frequency table.
 
 gauss.sh is the shell script needed to execute gauss.R on gauss.
 
@@ -16,8 +14,6 @@ report.doc is a work in progress report.
 
 
 ### please ignore the following for now
-
-Amazon: hadoop does not support .tar.bz2. have to get uncompressed files onto s3 bucket from my machine (which I don't have the data on) then copy (uncompressed files!) to hadoop (takes forever). I think one option is to have all the files, but each one is compressed to .bz2. I believe hadoop will automatically take care of unzipping, but not sure.
 
 cat data/2008_May.csv | python mapper.py | sort -k1,1 | python reducer.py > ctable.txt
 

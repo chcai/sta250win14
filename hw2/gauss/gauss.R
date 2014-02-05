@@ -16,7 +16,8 @@ arg = as.numeric(command.args[1])
 files = list.files(direc)
 file.i = paste0(direc, files[arg])
 
-## pre-2008 files and post-2008 files have different structures.
+## pre-2008 files (first 21 files) and post-2008 files 
+## have different structures.
 if(arg <= 21) {
   ## ignore all columns but arrival delays
   dat = read.csv(file.i, 
