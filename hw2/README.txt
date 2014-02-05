@@ -14,7 +14,9 @@ results1.rda contains the results and system info.
 
 Method 2 is in mapReduce folder.
 
-computation time: 15 mins
+computation time: 13.5 mins + 2 mins to copy files to hdfs
+
+mapRedPro.R computes the desired statistics from the MapReduce output
 
 
 
@@ -22,6 +24,6 @@ report.doc is a work in progress report.
 
 
 
-### please ignore the following for now
+### please ignore the following
 
-scp output/part* chcai@gumbel.ucdavis.edu:~
+scp results2.rda chcai@gumbel.ucdavis.edu:~
