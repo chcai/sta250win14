@@ -19,5 +19,5 @@ hadoop fs -copyToLocal output/part* ./
 # get stats
 R CMD BATCH mapRedPro.R
 
-# scp (backup) results to safe server
+# since hadoop.ucdavis.edu is still a test server, scp (backup) results to safe server
 scp results2.rda chcai@gumbel.ucdavis.edu:~

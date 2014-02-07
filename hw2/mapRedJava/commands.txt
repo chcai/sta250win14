@@ -1,10 +1,12 @@
+# compile java code
 # javac -classpath .:$HADOOP_HOME/hadoop-core-1.2.1.jar *.java
 
+# create a jar file
 # jar cvf eg.jar *.class
 
 # Hadoop will give error if Out folder already exits
 # alternatively, change name of output directory in the next command
-hadoop fs -rmr Out
+#hadoop fs -rmr Out
 
 # run
 # form is hadoop jar _.jar class_name input_dir output_dir
