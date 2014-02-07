@@ -22,10 +22,20 @@ results2.rda contains the results and system info.
 
 
 
+Method 2.5 is in mapRedJava folder.
+
+computation time: 7 mins
+
+work in progress
+
+
+
 report.doc is a work in progress report.
+
+
 
 
 
 ### please ignore the following
 
-scp results2.rda chcai@gumbel.ucdavis.edu:~
+scp results3.rda chcai@gumbel.ucdavis.edu:~

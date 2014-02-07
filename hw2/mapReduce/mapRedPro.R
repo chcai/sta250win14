@@ -6,6 +6,7 @@ library(Hmisc) ## wtd.stats()
 
 ## values are comma seperated
 table. = read.table('output/part-00000', sep = ',')
+#table. = read.table('part-r-00000')
 counts = as.integer(table.[,2])
 arr.delay = as.integer(table.[,1])
 
@@ -23,3 +24,11 @@ results2 = list(time = 13.5*60,
                 session = sessionInfo(), 
                 hadoop.version = '1.2.1')
 save(results2, file = 'results2.rda')
+
+results3 = list(time = 7*60, 
+                results = c(mean = mu, median = med, sd = std), 
+                quantiles = quantiles, 
+                system = Sys.info(), 
+                session = sessionInfo(), 
+                hadoop.version = '1.2.1')
+save(results3, file = 'results3.rda')
