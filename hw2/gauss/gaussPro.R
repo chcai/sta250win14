@@ -2,7 +2,7 @@
 ## sums (merges) the counts for any duplicated arrival delays, 
 ## and calculates the desired statistics
 
-library(Hmisc) ## wtd.stats()
+library('Hmisc') ## wtd.stats()
 
 table. = read.table('ctable.txt')
 ## sum counts for any duplicated arrival delays; 

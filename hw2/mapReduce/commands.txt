@@ -1,0 +1,23 @@
+# test (on local machine):
+cat data/1987.csv data/2008_May.csv | python mapper.py | sort -k1,1 | python reducer.py > test.txt
+
+# copy files from local to hdfs
+hadoop fs -copyFromLocal data /user/chcai
+
+# find jar file
+find $HADOOP_HOME -name '*streaming*.jar'
+
+# run
+$HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-1.2.1.jar \
+   -file mapper.py    -mapper mapper.py \
+   -file reducer.py   -reducer reducer.py \
+   -input data/*      -output output
+
+# copy output from hdfs to local
+hadoop fs -copyToLocal output/part* ./
+
+# get stats
+R CMD BATCH mapRedPro.R
+
+# scp (backup) results to safe server
+scp results2.rda chcai@gumbel.ucdavis.edu:~

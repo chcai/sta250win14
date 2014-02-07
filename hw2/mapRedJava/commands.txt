@@ -1,0 +1,17 @@
+# javac -classpath .:$HADOOP_HOME/hadoop-core-1.2.1.jar *.java
+
+# jar cvf eg.jar *.class
+
+# Hadoop will give error if Out folder already exits
+# alternatively, change name of output directory in the next command
+hadoop fs -rmr Out
+
+# run
+# form is hadoop jar _.jar class_name input_dir output_dir
+hadoop jar eg.jar DelaysFrequencyTable data Out
+
+# copy output from hdfs to local (current directory)
+hadoop fs -copyToLocal Out/part* ./
+
+# get stats
+R CMD BATCH mapRedJavaPro.R

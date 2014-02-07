@@ -8,7 +8,7 @@ import sys
 for line in sys.stdin:
     ## remove leading and trailing whitespaces
     line = line.strip()
-    ## split the line by comma
+    ## split the line by comma's
     entries = line.split(',')
     
     ## if there are less than 44 elements in a line
@@ -19,7 +19,7 @@ for line in sys.stdin:
             ## make sure we're going to get nice, clean integers
             ## for arrival delays
             arr_delay = int(entries[14])
-            ## print key, value pair to stdout.
+            ## print <key, value> pair to stdout.
             ## since we want a frequency table, 
             ## each key is an arrival delay
             ## and each value is 1
@@ -28,8 +28,7 @@ for line in sys.stdin:
             ## if entry is header or NA, 
             ## print value 0 so it doesn't get counted in reducer
             print '%s\t%s' % (0, 0)
-    ## if post-2008 files:
-    ## very similar to above
+    ## if post-2008 files: (very similar to above)
     else:
         if entries[44] != '"ARR_DEL15"' and entries[44] != '':
             ## python cannot convert entries such as '-2.00' to integer.
