@@ -4,7 +4,7 @@ cat data/1987.csv data/2008_May.csv | python mapper.py | sort -k1,1 | python red
 # copy files from local to hdfs
 hadoop fs -copyFromLocal data /user/chcai
 
-# find jar file
+# find streaming-jar file
 find $HADOOP_HOME -name '*streaming*.jar'
 
 # run

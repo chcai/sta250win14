@@ -12,9 +12,10 @@ load('results3.rda')
 
 png('times.png')
 barplot(c(hw1, results1$time, results2$time, results3$time)/60, 
-        names.arg = c(paste0('read.csv()\nnot parallel'), 
+        names.arg = c(paste0('read.csv()\nnon-parallel'), 
                       paste0('read.csv()\non gauss'), 
-                      'MapRed Python', 'MapRed Java'), 
+                      paste0('MapReduce\nPython'), 
+                      paste0('MapReduce\nJava')), 
         ylab = 'Time (Minutes)', 
         main = 'Computation Times')
 dev.off()

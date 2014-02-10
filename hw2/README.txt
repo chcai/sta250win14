@@ -44,8 +44,8 @@ commands.txt contains the commands to run this method.
 
 results*.rda's contain the results and systems info for the corresponding methods.
 
-report.doc is a work in progress report.
+report.doc/.pdf is the report.
+
+plots.R makes plot(s) for the report (ignore).
 
 times.png is in the report.
-
-plots.R makes plots (ignore).
