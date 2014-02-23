@@ -1,0 +1,16 @@
+{
+    "contents" : "library('MASS')\n\ndat = read.csv('train-sample.csv', header = TRUE, nrows = 10)\nnames(dat)\n\ndat = read.csv('train-sample.csv', header = TRUE, \n               colClasses = c('NULL', 'character', 'NULL', \n                              'character', 'numeric', 'numeric', \n                              'character', 'character', 'NULL', \n                              'NULL', 'NULL', 'NULL', \n                              'NULL', 'NULL', 'character'))\n\ny = character(length = nrow(dat))\ny[dat[,'OpenStatus'] == 'open'] = 'open'\ny[dat[,'OpenStatus'] != 'open'] = 'closed'\n\nPostCreationDate = as.POSIXlt(dat[,'PostCreationDate'], \n                              format = '%m/%d/%Y %H:%M:%S')\nOwnerCreationDate = as.POSIXlt(dat[,'OwnerCreationDate'], \n                               format = '%m/%d/%Y %H:%M:%S')\ndiff.time = \n  ceiling(\n    as.numeric(\n      difftime(PostCreationDate, OwnerCreationDate, \n               units = 'days')))\n\n## word counts?\n\nX = \n  data.frame(\n    cbind(\n      ReputationAtPostCreation = \n        dat[,'ReputationAtPostCreation'], \n      OwnerUndeletedAnswerCountAtPostTime = \n        dat[,'OwnerUndeletedAnswerCountAtPostTime'], \n      diff.time))\n\nset.seed(1)\nsub.set = sample.int(nrow(dat), nrow(dat)-10000)\nfit = lda(formula = y ~ ., data = X, prior = c(.06, .94), \n          subset = sub.set)\n\nsum(predict(fit, X[-sub.set,])$class == dat[-sub.set, 'OpenStatus'])\n\n#dat.test = read.csv('test.csv', header = TRUE)\n",
+    "created" : 1393020229809.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3679952443",
+    "id" : "DAA1C98B",
+    "lastKnownWriteTime" : 1393183771,
+    "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw3/hw3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
