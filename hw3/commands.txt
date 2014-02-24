@@ -1,0 +1,5 @@
+curl -L --cookie 'cookies' https://www.kaggle.com/c/predict-closed-questions-on-stack-overflow/download/train-sample.csv > train-sample.csv
+
+curl -L --cookie 'cookies' http://www.kaggle.com/c/predict-closed-questions-on-stack-overflow/download/test.csv > test.csv
+
+
