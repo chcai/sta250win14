@@ -1,0 +1,16 @@
+{
+    "contents" : "library('MASS')\nlibrary('car')\n\ndat = read.csv('train-sample.csv', header = TRUE, nrow = 1)\nnames(dat)\n\ndat = \n  read.csv('train-sample.csv', header = TRUE, \n           colClasses = c('NULL', 'character', 'numeric', \n                          'character', 'numeric', 'numeric', \n                          'character', 'character', 'character', \n                          'character', 'character', 'character', \n                          'character', 'NULL', 'character'))\n\ny = numeric(nrow(dat))\ny[dat[,'OpenStatus'] == 'open'] = 1\ny[dat[,'OpenStatus'] != 'open'] = 0\n\nPostCreationDate = \n  as.POSIXlt(dat[,'PostCreationDate'], \n             format = '%m/%d/%Y %H:%M:%S')\nOwnerCreationDate = \n  as.POSIXlt(dat[,'OwnerCreationDate'], \n             format = '%m/%d/%Y %H:%M:%S')\ndiff.time = \n  ceiling(\n    as.numeric(\n      difftime(PostCreationDate, OwnerCreationDate, \n               units = 'days')))\n\n# body.open = dat[y == 1, 'BodyMarkdown']\n# body.open2 = paste0(body.open, collapse = ' ')\n# body.open3 = \n#   strsplit(body.open2, \n#            split = '[[:blank:]]+|[[:punct:]]+|[[:space:]]+')\n# body.open4 = body.open3[[1]][body.open3[[1]] != '']\n# body.open5 = sort(table(body.open4), decreasing = TRUE)\n\ntag.logi = matrix(nrow = nrow(dat), ncol = 5)\nfor(j in 1:5) tag.logi[,j] = dat[, paste0('Tag', j)] != ''\ntag.num = apply(tag.logi, 1, sum)\n\nX = \n  data.frame(\n    cbind(as.numeric(diff.time), \n          as.factor(dat[,'OwnerUserId']), \n          as.numeric(dat[,'ReputationAtPostCreation']), \n          as.numeric(dat[,'OwnerUndeletedAnswerCountAtPostTime']), \n          as.numeric(tag.num)))\n\nset.seed(1)\nsub.set = sample.int(nrow(dat), nrow(dat)-10000)\nfit = glm(formula = as.factor(y) ~ ., data = X, \n          family = 'binomial', subset = sub.set)\n\npred = predict.glm(fit, X[-sub.set,], type = 'response')\n\ny2 = numeric(length(pred))\ny2[pred >= .5] = 1\ny2[pred < .5] = 0\n\nsum(y2 == y[-sub.set])\n\n#dat.test = read.csv('test.csv', header = TRUE)\n",
+    "created" : 1393559415438.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1791549024",
+    "id" : "C2A60BB2",
+    "lastKnownWriteTime" : 1393562664,
+    "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw3/hw3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
