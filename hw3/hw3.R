@@ -1,20 +1,21 @@
-library('MASS')
-library('car')
+# library('MASS')
+# library('car')
 
-dat = read.csv('train-sample.csv', header = TRUE, nrow = 1)
-names(dat)
+dat0 = read.csv('train-sample.csv', header = TRUE, nrow = 1)
+names(dat0)
 
-dat = 
-  read.csv('train-sample.csv', header = TRUE, 
-           colClasses = c('NULL', 'character', 'numeric', 
-                          'character', 'numeric', 'numeric', 
-                          'character', 'character', 'character', 
-                          'character', 'character', 'character', 
-                          'character', 'NULL', 'character'))
+# dat = 
+#   read.csv('train-sample.csv', header = TRUE, 
+#            colClasses = c('NULL', 'character', 'factor', 
+#                           'character', 'integer', 'integer', 
+#                           'character', 'character', 'character', 
+#                           'character', 'character', 'character', 
+#                           'character', 'NULL', 'character'))
+# save(dat, file = 'dat.rda')
 
-y = numeric(nrow(dat))
-y[dat[,'OpenStatus'] == 'open'] = 1
-y[dat[,'OpenStatus'] != 'open'] = 0
+load('dat.rda')
+
+dat = dat[dat[,'ReputationAtPostCreation'] >= 1, ]
 
 PostCreationDate = 
   as.POSIXlt(dat[,'PostCreationDate'], 
@@ -27,26 +28,24 @@ diff.time =
     as.numeric(
       difftime(PostCreationDate, OwnerCreationDate, 
                units = 'days')))
+dat = dat[diff.time >= 1, ]
+diff.time = diff.time[diff.time >= 1]
 
-# body.open = dat[y == 1, 'BodyMarkdown']
-# body.open2 = paste0(body.open, collapse = ' ')
-# body.open3 = 
-#   strsplit(body.open2, 
-#            split = '[[:blank:]]+|[[:punct:]]+|[[:space:]]+')
-# body.open4 = body.open3[[1]][body.open3[[1]] != '']
-# body.open5 = sort(table(body.open4), decreasing = TRUE)
+y = numeric(nrow(dat))
+y[dat[,'OpenStatus'] == 'open'] = 1
+y[dat[,'OpenStatus'] != 'open'] = 0
 
 tag.logi = matrix(nrow = nrow(dat), ncol = 5)
 for(j in 1:5) tag.logi[,j] = dat[, paste0('Tag', j)] != ''
 tag.num = apply(tag.logi, 1, sum)
 
+load('body_logi.rda')
+
 X = 
-  data.frame(
-    cbind(as.numeric(diff.time), 
-          as.factor(dat[,'OwnerUserId']), 
-          as.numeric(dat[,'ReputationAtPostCreation']), 
-          as.numeric(dat[,'OwnerUndeletedAnswerCountAtPostTime']), 
-          as.numeric(tag.num)))
+  cbind(dat[, c('OwnerUserId', 'ReputationAtPostCreation', 
+               'ReputationAtPostCreation')], 
+        diff.time, tag.num, body.logi)
+X[,1] = as.integer(X[,1])
 
 set.seed(1)
 sub.set = sample.int(nrow(dat), nrow(dat)-10000)

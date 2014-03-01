@@ -1,0 +1,16 @@
+{
+    "contents" : "body.fun = function(x, dat, y) \n{\n  body.x = dat[y == x, 'BodyMarkdown']\n  body.x = paste0(body.x, collapse = ' ')\n  body.x = \n    strsplit(body.x, \n             split = '[[:blank:]]+|[[:punct:]]+|[[:space:]]+')\n  body.x2 = \n    body.x[[1]][nchar(body.x[[1]]) > 3]\n  body.x3 = sort(table(body.x2), decreasing = TRUE)\n}\n\nbody.open = body.fun(1, dat, y)\nbody.closed = body.fun(0, dat, y)\n\nwords = \n  c(names(body.open)[1:100][!names(body.open)[1:100] %in% \n                              names(body.closed)[1:100]], \n    names(body.closed)[1:100][!names(body.closed)[1:100] %in% \n                                names(body.open)[1:100]])\n\nsave(words, file = 'words.rda')\n\nload('words.rda')\n\nbody.logi = \n  sapply(words, function(word) grepl(word, dat[,'BodyMarkdown']))\n\nsave(body.logi, file = 'body_logi.rda')\n",
+    "created" : 1393627168907.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2619851859",
+    "id" : "64FA055D",
+    "lastKnownWriteTime" : 1393636819,
+    "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw3/body.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

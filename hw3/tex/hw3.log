@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.1.19)  27 FEB 2014 20:52
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.1.19)  28 FEB 2014 12:41
 entering extended mode
 **hw3.tex
 ("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.tex"
@@ -121,19 +121,22 @@ LaTeX Info: Redefining \] on input line 2667.
 \l_MT_above_shortintertext_dim=\dimen119
 \l_MT_below_shortintertext_dim=\dimen120
 )
+(C:\Users\Christine\Desktop\myPrograms\MiKTeX\tex\latex\setspace\setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
 ("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
 
 (C:\Users\Christine\Desktop\myPrograms\MiKTeX\tex\latex\graphics\graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -177,7 +180,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen123
 \Gin@req@width=\dimen124
 )
-Underfull \hbox (badness 10000) in paragraph at lines 5--8
+Underfull \hbox (badness 10000) in paragraph at lines 6--9
 
  []
 
@@ -186,17 +189,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--8
 {C:/Users/Christine/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 ("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.aux") ) 
 Here is how much of TeX's memory you used:
- 2220 strings out of 494045
- 30958 string characters out of 3141524
- 85483 words of memory out of 3000000
- 5538 multiletter control sequences out of 15000+200000
+ 2254 strings out of 494045
+ 31601 string characters out of 3141524
+ 87767 words of memory out of 3000000
+ 5568 multiletter control sequences out of 15000+200000
  3938 words of font info for 15 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 33i,4n,22p,611b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,4n,22p,930b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Use
 rs/Christine/Desktop/myPrograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb
 >
-Output written on hw3.pdf (1 page, 18612 bytes).
+Output written on hw3.pdf (1 page, 21605 bytes).
 PDF statistics:
  10 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
