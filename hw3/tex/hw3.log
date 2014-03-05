@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.1.19)  28 FEB 2014 12:41
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.1.19)  4 MAR 2014 17:12
 entering extended mode
 **hw3.tex
 ("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.tex"
@@ -187,7 +187,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--9
 [1
 
 {C:/Users/Christine/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.aux") ) 
+[2] ("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.aux") ) 
 Here is how much of TeX's memory you used:
  2254 strings out of 494045
  31601 string characters out of 3141524
@@ -195,13 +195,13 @@ Here is how much of TeX's memory you used:
  5568 multiletter control sequences out of 15000+200000
  3938 words of font info for 15 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 33i,4n,22p,930b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Use
-rs/Christine/Desktop/myPrograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb
->
-Output written on hw3.pdf (1 page, 21605 bytes).
+ 33i,4n,22p,917b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:
+/Users/Christine/Desktop/myPrograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12
+.pfb>
+Output written on hw3.pdf (2 pages, 23046 bytes).
 PDF statistics:
- 10 PDF objects out of 1000 (max. 8388607)
+ 13 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

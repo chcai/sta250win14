@@ -6,7 +6,7 @@ names(dat0)
 
 # dat = 
 #   read.csv('train-sample.csv', header = TRUE, 
-#            colClasses = c('NULL', 'character', 'factor', 
+#            colClasses = c('NULL', 'character', 'NULL', 
 #                           'character', 'integer', 'integer', 
 #                           'character', 'character', 'character', 
 #                           'character', 'character', 'character', 
@@ -31,9 +31,18 @@ diff.time =
 dat = dat[diff.time >= 1, ]
 diff.time = diff.time[diff.time >= 1]
 
-y = numeric(nrow(dat))
-y[dat[,'OpenStatus'] == 'open'] = 1
-y[dat[,'OpenStatus'] != 'open'] = 0
+# title.nwords = 
+#   sapply(1:nrow(dat), function(i) 
+#     length(gregexpr('\\w+', dat[i, 'Title'])[[1]]))
+# 
+# save(title.nwords, file = 'title_nwords.rda')
+
+# body.nwords = 
+#   sapply(1:nrow(dat), function(i) 
+#     length(gregexpr('\\w+', dat[i, 'BodyMarkdown'])[[1]]))
+# 
+# save(body.nwords, file = 'body_nwords.rda')
+load('body_nwords.rda')
 
 tag.logi = matrix(nrow = nrow(dat), ncol = 5)
 for(j in 1:5) tag.logi[,j] = dat[, paste0('Tag', j)] != ''
@@ -41,11 +50,14 @@ tag.num = apply(tag.logi, 1, sum)
 
 load('body_logi.rda')
 
+y = numeric(nrow(dat))
+y[dat[,'OpenStatus'] == 'open'] = 1
+y[dat[,'OpenStatus'] != 'open'] = 0
+
 X = 
-  cbind(dat[, c('OwnerUserId', 'ReputationAtPostCreation', 
-               'ReputationAtPostCreation')], 
-        diff.time, tag.num, body.logi)
-X[,1] = as.integer(X[,1])
+  cbind(dat[, c('ReputationAtPostCreation', 
+                'OwnerUndeletedAnswerCountAtPostTime')], 
+        diff.time, body.nwords, tag.num, body.logi)
 
 set.seed(1)
 sub.set = sample.int(nrow(dat), nrow(dat)-10000)
@@ -59,5 +71,3 @@ y2[pred >= .5] = 1
 y2[pred < .5] = 0
 
 sum(y2 == y[-sub.set])
-
-#dat.test = read.csv('test.csv', header = TRUE)
