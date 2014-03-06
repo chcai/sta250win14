@@ -1,0 +1,16 @@
+{
+    "contents" : "### given response vector and variables data frame, \n# set up to fit different models on different subsets \n# of the data on the gauss cluster. \n# writes number of correct predictions (for one model) \n# to a txt file\n\nlibrary('rpart') # rpart()\n\n# get job number\nargs = as.numeric(commandArgs(TRUE))\n\n# load response and variables data frame\nload('X.rda')\n\n# set a different seed for each job \n# and leave 10,000 observations out \n# when fitting the model.\n# so we can predict these later \n# and compare to actually open or closed\nset.seed(args)\nsub.set = sample.int(nrow(X), nrow(X)-10000)\n\n# if probability of being open is >= .5, \n# classify as open; else closed. \n# compare predictions to correct answer\n\n# fit = glm(formula = as.factor(y) ~ ., data = X, \n#           family = 'binomial'(link = 'probit'), subset = sub.set)\n# pred = predict.glm(fit, X[-sub.set,], type = 'response')\n# y2 = numeric(length(pred))\n# y2[pred >= .5] = 1\n# y2[pred < .5] = 0\n# this = sum(y2 == y[-sub.set])\n\nfit = rpart(formula = as.factor(y) ~ ., data = X, \n          subset = sub.set, method = 'class')\npred = predict(fit, X[-sub.set,], type = 'class')\nthis = sum(pred == y[-sub.set])\n\nwrite(this, file = paste0('output3/this_', 1000+args, '.txt'))\n",
+    "created" : 1394083204406.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2748249266",
+    "id" : "B7CC98D8",
+    "lastKnownWriteTime" : 1394099032,
+    "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw3/gauss.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

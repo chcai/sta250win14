@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.1.19)  4 MAR 2014 17:12
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2013.1.19)  6 MAR 2014 01:18
 entering extended mode
 **hw3.tex
 ("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.tex"
@@ -124,20 +124,6 @@ LaTeX Info: Redefining \] on input line 2667.
 (C:\Users\Christine\Desktop\myPrograms\MiKTeX\tex\latex\setspace\setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-
 (C:\Users\Christine\Desktop\myPrograms\MiKTeX\tex\latex\graphics\graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -163,22 +149,36 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count103
+))
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
+) ("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+
 (C:\Users\Christine\Desktop\myPrograms\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count104
-\scratchdimen=\dimen121
+\scratchdimen=\dimen123
 \scratchbox=\box28
 \nofMPsegments=\count105
 \nofMParguments=\count106
 \everyMPshowfont=\toks20
 \MPscratchCnt=\count107
-\MPscratchDim=\dimen122
+\MPscratchDim=\dimen124
 \MPnumerator=\count108
 \makeMPintoPDFobject=\count109
 \everyMPtoPDFconversion=\toks21
-)))
-\Gin@req@height=\dimen123
-\Gin@req@width=\dimen124
 )
 Underfull \hbox (badness 10000) in paragraph at lines 6--9
 
@@ -187,21 +187,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--9
 [1
 
 {C:/Users/Christine/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-[2] ("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.aux") ) 
+<this.png, id=6, 481.8pt x 481.8pt>
+File: this.png Graphic file (type png)
+ <use this.png>
+Package pdftex.def Info: this.png used on input line 20.
+(pdftex.def)             Requested size: 337.25769pt x 337.25769pt.
+ [2] [3 <C:/Users/Christine/Google Drive/GitHub/sta250win14/hw3/tex/this.png>]
+("C:\Users\Christine\Google Drive\GitHub\sta250win14\hw3\tex\hw3.aux") ) 
 Here is how much of TeX's memory you used:
- 2254 strings out of 494045
- 31601 string characters out of 3141524
- 87767 words of memory out of 3000000
- 5568 multiletter control sequences out of 15000+200000
+ 2260 strings out of 494045
+ 31664 string characters out of 3141524
+ 88607 words of memory out of 3000000
+ 5572 multiletter control sequences out of 15000+200000
  3938 words of font info for 15 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 33i,4n,22p,917b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:
-/Users/Christine/Desktop/myPrograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12
-.pfb>
-Output written on hw3.pdf (2 pages, 23046 bytes).
+ 33i,5n,22p,1036b,111s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Use
+rs/Christine/Desktop/myPrograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb
+>
+Output written on hw3.pdf (3 pages, 32570 bytes).
 PDF statistics:
- 13 PDF objects out of 1000 (max. 8388607)
+ 18 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
