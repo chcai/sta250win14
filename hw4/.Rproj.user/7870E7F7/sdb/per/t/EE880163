@@ -1,0 +1,16 @@
+{
+    "contents" : "library('maps')\n\nsvg('airports2.svg')\nmap('state', bg = 'white')\npoints(airports$long, airports$lat, col = 'blue', pch = 16)\ndev.off()",
+    "created" : 1394648131105.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3454925181",
+    "id" : "EE880163",
+    "lastKnownWriteTime" : 1394681551,
+    "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/maps.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
