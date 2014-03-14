@@ -1,0 +1,16 @@
+{
+    "contents" : "library('maps')\n\nload('dat2.rda')\n\nsvg('airports2.svg')\nmap('state', bg = 'white', col = 8)\npoints(airports$long, airports$lat, col = 'blue', pch = 16)\nsapply(1:nrow(airports2), function(i) \n  lines(c(airports$long[airports$iata == 'SFO'], \n          airports2$long[i]), \n        c(airports$lat[airports$iata == 'SFO'], \n          airports2$lat[i]), \n       col = cols[i]))\n# sapply(1:29, function(i) \n#   sapply((i+1):30, function(j) \n#     lines(c(airports$long[i], airports$long[j]), \n#           c(airports$lat[i], airports$lat[j]))))\ndev.off()",
+    "created" : 1394762822340.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2624984030",
+    "id" : "AC323052",
+    "lastKnownWriteTime" : 1394755371,
+    "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/maps.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

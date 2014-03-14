@@ -14,11 +14,8 @@ lapply(1:30, function(i)
               addArea = TRUE))
 lapply(1:30, function(i) 
   addLink(p[[169+i]], paste0('plots/', plots[i])))
-radioShowHide(doc, labels = 1:199, save = FALSE)
 
 saveXML(doc, 'airports3.svg')
-
-roots = xmlRoot(doc)
 
 # op <- par(bg = "thistle")
 # svg("/tmp/raster.svg")

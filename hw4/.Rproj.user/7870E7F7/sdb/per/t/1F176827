@@ -1,11 +1,11 @@
 {
     "contents" : "tmp = split(dat, dat$Origin, drop = TRUE)\n\nsapply(1:30, function(i) \n{\n  med = by(tmp[[i]]$ArrDelay, tmp[[i]]$UniqueCarrier, \n           median, na.rm = TRUE)\n  med = med[!is.na(med)]\n  png(paste0('plots/', names(tmp)[i], '.png'))\n  plot(med, \n       type = 'b', \n       ylim = c(-10, 20), \n       xaxt = 'n', \n       xlab = 'Airline', \n       ylab = 'Median Arrival Delay (Mins)', \n       main = paste0('Flights from ', names(tmp)[i]))\n  axis(1, at = c(1:length(med)), \n       labels = attributes(med)$dimnames[[1]])\n  dev.off()\n})",
-    "created" : 1394586842364.000,
+    "created" : 1394762824917.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "70433571",
-    "id" : "98B72CD9",
+    "id" : "1F176827",
     "lastKnownWriteTime" : 1394593801,
     "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/plots.R",
     "properties" : {

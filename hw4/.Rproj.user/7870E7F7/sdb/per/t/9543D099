@@ -1,0 +1,16 @@
+{
+    "contents" : "library('animint')\nlibrary('maps')\n\nload('dat2.rda')\n\nairports = cbind(airports, 'time' = 1:30)\n\nUSpolygons <- map_data(\"state\")\nUSpolygons$state = \n  state.abb[match(USpolygons$region, tolower(state.name))]\n\nmap <- ggplot() + \n  geom_polygon(aes(x = long, y = lat, group = group), \n               data = USpolygons, fill = \"white\", colour = \"grey\") + \n  geom_point(aes(x = long, y = lat, showSelected = time), \n             data = airports, colour = 'blue')\nmap\n\nts <- ggplot() +\n  geom_point(aes(x = long, y = lat), \n             data = airports, colour = 'blue')\n\ntime <- list(variable = 'time', ms = 2000)\n\ntornado.anim <- list(map = map, ts = ts, time = time, \n                     width = list(map = 970, ts = 400), \n                     height = list(400))\n\ngg2animint(tornado.anim, \"tornado-anim\")\n\n\n\n\nUStornadoCounts <-\n  ddply(UStornadoes, .(state, year), summarize, count=length(state))\n\nmap <- ggplot()+\n  geom_polygon(aes(x=long, y=lat, group=group),\n               data=USpolygons, fill=\"black\", colour=\"grey\") +\n  geom_segment(aes(x=startLong, y=startLat, xend=endLong, yend=endLat,\n                   showSelected=year),\n               colour=\"#55B1F7\", data=UStornadoes)\n\nts <- ggplot()+\n  geom_line(aes(year, count),\n            data=UStornadoCounts, alpha=3/5, size=4)\n\ntime <- list(variable=\"year\", ms=2000) # new part of the list passed to gg2animint().\n\ntornado.anim <- list(map=map, ts = ts, time=time, width=list(map = 970, ts = 400),  height=list(400)) # pass the time object in as another object in the main list. \n\ngg2animint(tornado.anim, \"tornado-anim\")\n",
+    "created" : 1394763487294.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "962554583",
+    "id" : "9543D099",
+    "lastKnownWriteTime" : 1394770073,
+    "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/animint.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

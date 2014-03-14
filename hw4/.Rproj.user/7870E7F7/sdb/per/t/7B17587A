@@ -1,0 +1,16 @@
+{
+    "contents" : "library('SVGAnnotation')\n\n# load('dat.rda')\n# \n# flights = paste0(dat$UniqueCarrier, ' ', dat$FlightNum)\n# \n# top.flights = sort(table(flights), decreasing = TRUE)\n# top.flights = attributes(top.flights)$dimnames[[1]][1:30]\n# \n# dat = dat[flights %in% top.flights, -c(1,11,14,20:21,23,25:29)]\n# save(dat, top.flights, file = 'dat3.rda')\nload('dat3.rda')\nload('dat2.rda')\n\ndoc = xmlParse(\"airports2.svg\")\np = getPlotPoints(doc)\n\ntmp = rbind(cbind(airports$long, airports$lat)[1:2,], \n            cbind(airports$long+10, airports$lat+10)[1:2,])\ntmp2 = rep(1:2, each = 2)\nanimate('airports2.svg', tmp, tmp2, \n        points = list(p[[170]], p[[171]]))\n\ndoc = svgPlot(plot(1:10))\ndata. = rbind(cbind(1:10, 1:10), \n            cbind(1:10, 1:10+.5))\nwhich. = rep(1:2, each = 10)\nanimate(doc, data., which.)\n",
+    "created" : 1394762817344.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4275685693",
+    "id" : "7B17587A",
+    "lastKnownWriteTime" : 1394745482,
+    "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/animate.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

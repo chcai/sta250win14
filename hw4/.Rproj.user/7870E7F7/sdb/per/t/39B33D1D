@@ -1,11 +1,11 @@
 {
     "contents" : "library('RgoogleMaps')\n\n# dat = read.csv('1989.csv')\n# save(dat, file = 'dat.rda')\n\n# load('dat.rda')\n# airports = read.csv('airports.csv')\n# big.airports = \n#   attributes(\n#     sort(\n#       table(dat$Dest), decreasing = TRUE))$dimnames[[1]][1:30]\n# airports = airports[airports$iata %in% big.airports,]\n# dat = dat[dat$Origin %in% big.airports & \n#             dat$Dest %in% big.airports, \n#           -c(1,11,14,20:21,23,25:29)]\n# dat = droplevels(dat)\n# save(dat, airports, big.airports, file = 'dat2.rda')\n\nload('dat2.rda')\n\nmarkers = cbind(airports$lat, airports$long, rep('small', 30), \n                rep('red', 30), rep('', 30))\ncolnames(markers) = c(\"lat\", \"lon\", \"size\", \"col\", \"char\")\n\nsvg('airports.svg')\nmap = GetMap('United States', zoom = 4, markers = markers)\nPlotArrowsOnStaticMap(map, 33.64044, -84.42694, 36.12448, -86.67818)\ndev.off()\n\n# PlotArrowsOnStaticMap(map, \n#                       airports$lat[1:2], airports$long[1:2], \n#                       airports$lat[3:4], airports$long[3:4])\n\n#TextOnStaticMap",
-    "created" : 1394505441964.000,
+    "created" : 1394762819939.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "357363666",
-    "id" : "49CD4F7",
+    "id" : "39B33D1D",
     "lastKnownWriteTime" : 1394598957,
     "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/hw4.R",
     "properties" : {

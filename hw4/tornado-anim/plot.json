@@ -1,0 +1,149 @@
+{
+ "geoms": {
+ "geom1_polygon_map": {
+ "geom": "polygon",
+"data": "geom1_polygon_map.csv",
+"aes": {
+ "x": "long",
+"y": "lat",
+"group": "group" 
+},
+"params": {
+ "colour": "grey",
+"fill": "white" 
+},
+"update": "",
+"subord": [
+ "group" 
+],
+"subvars": {
+ "group": "group" 
+},
+"classed": "geom1_polygon_map",
+"types": {
+ "x": "numeric",
+"y": "numeric",
+"group": "integer",
+"PANEL": "integer" 
+},
+"nextgeom": "geom2_point_map" 
+},
+"geom2_point_map": {
+ "geom": "point",
+"data": "geom2_point_map.csv",
+"aes": {
+ "x": "long",
+"y": "lat",
+"showSelected": "time" 
+},
+"params": {
+ "na.rm": false,
+"colour": "blue" 
+},
+"update": {
+ "showSelected": "time" 
+},
+"subord": [
+ "showSelected" 
+],
+"subvars": {
+ "showSelected": "time" 
+},
+"classed": "geom2_point_map",
+"types": {
+ "x": "numeric",
+"y": "numeric",
+"showSelected": "integer",
+"PANEL": "integer",
+"group": "integer" 
+},
+"nextgeom": "geom3_point_ts" 
+},
+"geom3_point_ts": {
+ "geom": "point",
+"data": "geom3_point_ts.csv",
+"aes": {
+ "x": "long",
+"y": "lat" 
+},
+"params": {
+ "na.rm": false,
+"colour": "blue" 
+},
+"update": "",
+"subord": [],
+"subvars": [],
+"classed": "geom3_point_ts",
+"types": {
+ "x": "numeric",
+"y": "numeric",
+"PANEL": "integer",
+"group": "integer" 
+} 
+} 
+},
+"selectors": {
+ "time": {
+ "selected": 1,
+"subset": [
+ "geom2_point_map" 
+] 
+} 
+},
+"plots": {
+ "map": {
+ "geoms": [
+ "geom1_polygon_map",
+"geom2_point_map" 
+],
+"options": {
+ "width":    970,
+"height":    400 
+},
+"axis": {
+ "x": [ 0.11924, 0.4345, 0.74975 ],
+"xlab": [ "-120", "-100", "-80" ],
+"xrange": [ -127.57, -64.124 ],
+"xname": "long",
+"xline": true,
+"xticks": true,
+"y": [ 0.040584,  0.228, 0.41542, 0.60283, 0.79025, 0.97766 ],
+"ylab": [ "25", "30", "35", "40", "45", "50" ],
+"yrange": [ 23.917, 50.596 ],
+"yname": "lat",
+"yline": true,
+"yticks": true 
+},
+"legend": {} 
+},
+"ts": {
+ "geoms": [
+ "geom3_point_ts" 
+],
+"options": {
+ "width":    400,
+"height":    400 
+},
+"axis": {
+ "x": [ 0.087482, 0.26445, 0.44142, 0.61839, 0.79536, 0.97233 ],
+"xlab": [ "-120", "-110", "-100", "-90", "-80", "-70" ],
+"xrange": [ -124.94, -68.437 ],
+"xname": "long",
+"xline": true,
+"xticks": true,
+"y": [ 0.012155, 0.22205, 0.43195, 0.64184, 0.85174 ],
+"ylab": [ "25", "30", "35", "40", "45" ],
+"yrange": [  24.71, 48.532 ],
+"yname": "lat",
+"yline": true,
+"yticks": true 
+},
+"legend": {} 
+} 
+},
+"time": {
+ "variable": "time",
+"ms":   2000,
+"sequence": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" ] 
+} 
+}
