@@ -34,46 +34,72 @@
 "aes": {
  "x": "long",
 "y": "lat",
-"showSelected": "time" 
+"showSelected": "carrier",
+"colour": "colors" 
 },
 "params": {
  "na.rm": false,
-"colour": "blue" 
+"size":      4 
 },
 "update": {
- "showSelected": "time" 
+ "showSelected": "carrier" 
 },
 "subord": [
  "showSelected" 
 ],
 "subvars": {
- "showSelected": "time" 
+ "showSelected": "carrier" 
 },
 "classed": "geom2_point_map",
 "types": {
- "x": "numeric",
+ "colour": "rgb",
+"x": "numeric",
 "y": "numeric",
 "showSelected": "integer",
 "PANEL": "integer",
-"group": "integer" 
+"group": "integer",
+"fill": "rgb" 
 },
-"nextgeom": "geom3_point_ts" 
+"nextgeom": "geom3_tallrect_ts" 
 },
-"geom3_point_ts": {
- "geom": "point",
-"data": "geom3_point_ts.csv",
+"geom3_tallrect_ts": {
+ "geom": "tallrect",
+"data": "geom3_tallrect_ts.csv",
 "aes": {
- "x": "long",
-"y": "lat" 
+ "xmin": "xmin",
+"xmax": "xmax",
+"clickSelects": "carrier" 
 },
 "params": {
- "na.rm": false,
-"colour": "blue" 
+ "alpha":    0.5 
 },
+"update": {
+ "clickSelects": "carrier" 
+},
+"subord": [],
+"subvars": [],
+"classed": "geom3_tallrect_ts",
+"types": {
+ "xmin": "numeric",
+"xmax": "numeric",
+"clickSelects": "numeric",
+"PANEL": "integer",
+"group": "integer" 
+},
+"nextgeom": "geom4_line_ts" 
+},
+"geom4_line_ts": {
+ "geom": "line",
+"data": "geom4_line_ts.csv",
+"aes": {
+ "x": "carrier",
+"y": "delays" 
+},
+"params": [],
 "update": "",
 "subord": [],
 "subvars": [],
-"classed": "geom3_point_ts",
+"classed": "geom4_line_ts",
 "types": {
  "x": "numeric",
 "y": "numeric",
@@ -83,10 +109,11 @@
 } 
 },
 "selectors": {
- "time": {
+ "carrier": {
  "selected": 1,
 "subset": [
- "geom2_point_map" 
+ "geom2_point_map",
+"geom3_tallrect_ts" 
 ] 
 } 
 },
@@ -96,6 +123,14 @@
  "geom1_polygon_map",
 "geom2_point_map" 
 ],
+"scales": {
+ "colour": {
+ "NA": "grey",
+"< 10 mins": "green",
+"10 - 20 mins": "yellow",
+"> 20 mins": "red" 
+} 
+},
 "options": {
  "width":    970,
 "height":    400 
@@ -114,27 +149,64 @@
 "yline": true,
 "yticks": true 
 },
-"legend": {} 
+"legend": {
+ "colors": {
+ "guide": "legend",
+"geoms": "point",
+"title": "colors",
+"entries": [
+ {
+ "pointcolour": "#BEBEBE",
+"pointshape":     16,
+"pointsize":      4,
+"pointorder": 4,
+"label": [ "NA" ] 
+},
+{
+ "pointcolour": "#FFFF00",
+"pointshape":     16,
+"pointsize":      4,
+"pointorder": 3,
+"label": [ "10 - 20 mins" ] 
+},
+{
+ "pointcolour": "#FF0000",
+"pointshape":     16,
+"pointsize":      4,
+"pointorder": 2,
+"label": [ "> 20 mins" ] 
+},
+{
+ "pointcolour": "#00FF00",
+"pointshape":     16,
+"pointsize":      4,
+"pointorder": 1,
+"label": [ "< 10 mins" ] 
+} 
+] 
+} 
+} 
 },
 "ts": {
  "geoms": [
- "geom3_point_ts" 
+ "geom3_tallrect_ts",
+"geom4_line_ts" 
 ],
 "options": {
  "width":    400,
 "height":    400 
 },
 "axis": {
- "x": [ 0.087482, 0.26445, 0.44142, 0.61839, 0.79536, 0.97233 ],
-"xlab": [ "-120", "-110", "-100", "-90", "-80", "-70" ],
-"xrange": [ -124.94, -68.437 ],
-"xname": "long",
+ "x": [ 0.039474, 0.10526, 0.17105, 0.23684, 0.30263, 0.36842, 0.43421,    0.5, 0.56579, 0.63158, 0.69737, 0.76316, 0.82895 ],
+"xlab": [ "AA", "AS", "CO", "DL", "EA", "HP", "NW", "PA", "PI", "TW", "UA", "US", "WN" ],
+"xrange": [    0.4,   15.6 ],
+"xname": "Carrier",
 "xline": true,
 "xticks": true,
-"y": [ 0.012155, 0.22205, 0.43195, 0.64184, 0.85174 ],
-"ylab": [ "25", "30", "35", "40", "45" ],
-"yrange": [  24.71, 48.532 ],
-"yname": "lat",
+"y": [ 0.0049183, 0.23638, 0.46784, 0.6993, 0.93076 ],
+"ylab": [ "5.0", "7.5", "10.0", "12.5", "15.0" ],
+"yrange": [ 4.9469, 15.748 ],
+"yname": "Mean Departure Delay",
 "yline": true,
 "yticks": true 
 },
@@ -142,8 +214,8 @@
 } 
 },
 "time": {
- "variable": "time",
-"ms":   2000,
-"sequence": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" ] 
+ "variable": "carrier",
+"ms":   5000,
+"sequence": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" ] 
 } 
 }

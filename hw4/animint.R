@@ -3,7 +3,42 @@ library('maps')
 
 load('dat2.rda')
 
-airports = cbind(airports, 'time' = 1:30)
+# dat = dat[{dat$Month == 12 & dat$Origin == 'SFO'}, ]
+# dep.dels = 
+#   by(dat$DepDelay, list(dat$DayofMonth, dat$Dest), 
+#      mean, na.rm = TRUE)
+
+dep.dels = 
+  by(dat$DepDelay, list(dat$Origin, dat$UniqueCarrier), 
+     mean, na.rm = TRUE)
+dep.dels = matrix(dep.dels, nrow = 30)
+
+big.airports = sort(big.airports)
+carriers = sort(as.character(unique(dat$UniqueCarrier)))
+carriers[8] = 'PA'
+
+my.colors = matrix(nrow = 30, ncol = 13)
+for(j in 1:13)
+  for(i in 1:30) 
+  {
+    if(is.na(dep.dels[i, j])) 
+    {
+      my.colors[i, j] = 'NA'
+    } else 
+    {
+      if(dep.dels[i, j] <= 10) my.colors[i, j] = '< 10 mins'
+      if(dep.dels[i, j] > 10 && dep.dels[i, j] <= 20) 
+        my.colors[i, j] = '10 - 20 mins'
+      if(dep.dels[i, j] > 20) my.colors[i, j] = '> 20 mins'
+    }
+  }
+
+to.plot = 
+  as.data.frame(
+    matrix(
+      c(rep(airports$long, 13), rep(airports$lat, 13)), ncol = 2))
+to.plot = cbind(to.plot, as.vector(my.colors), rep(1:13, each = 30))
+names(to.plot) = c('long', 'lat', 'colors', 'carrier')
 
 USpolygons <- map_data("state")
 USpolygons$state = 
@@ -12,41 +47,33 @@ USpolygons$state =
 map <- ggplot() + 
   geom_polygon(aes(x = long, y = lat, group = group), 
                data = USpolygons, fill = "white", colour = "grey") + 
-  geom_point(aes(x = long, y = lat, showSelected = time), 
-             data = airports, colour = 'blue')
-map
+  geom_point(aes(x = long, y = lat, showSelected = carrier, 
+                 colour = colors), 
+             data = to.plot, size = 4) + 
+  scale_color_manual(
+    values = 
+      c('NA' = 'grey', '< 10 mins' = 'green', 
+        '10 - 20 mins' = 'yellow', '> 20 mins' = 'red'))
 
-ts <- ggplot() +
-  geom_point(aes(x = long, y = lat), 
-             data = airports, colour = 'blue')
+all.dels = 
+  by(dat$DepDelay, dat$UniqueCarrier, mean, na.rm = TRUE)
+to.plot.ts = 
+  as.data.frame(cbind(1:13, all.dels))
+names(to.plot.ts) = c('carrier', 'delays')
 
-time <- list(variable = 'time', ms = 2000)
+ts <- ggplot() + 
+  make_tallrect(to.plot.ts, 'carrier') + 
+  geom_line(aes(carrier, delays),
+            data = to.plot.ts) + 
+  xlab('Carrier') + 
+  ylab('Mean Departure Delay') + 
+  scale_x_discrete(breaks = 1:13, 
+                   labels = carriers)
 
-tornado.anim <- list(map = map, ts = ts, time = time, 
-                     width = list(map = 970, ts = 400), 
-                     height = list(400))
+time <- list(variable = 'carrier', ms = 5000)
 
-gg2animint(tornado.anim, "tornado-anim")
+air.anim <- list(map = map, ts = ts, time = time, 
+                 width = list(map = 970, ts = 400), 
+                 height = list(400))
 
-
-
-
-UStornadoCounts <-
-  ddply(UStornadoes, .(state, year), summarize, count=length(state))
-
-map <- ggplot()+
-  geom_polygon(aes(x=long, y=lat, group=group),
-               data=USpolygons, fill="black", colour="grey") +
-  geom_segment(aes(x=startLong, y=startLat, xend=endLong, yend=endLat,
-                   showSelected=year),
-               colour="#55B1F7", data=UStornadoes)
-
-ts <- ggplot()+
-  geom_line(aes(year, count),
-            data=UStornadoCounts, alpha=3/5, size=4)
-
-time <- list(variable="year", ms=2000) # new part of the list passed to gg2animint().
-
-tornado.anim <- list(map=map, ts = ts, time=time, width=list(map = 970, ts = 400),  height=list(400)) # pass the time object in as another object in the main list. 
-
-gg2animint(tornado.anim, "tornado-anim")
+gg2animint(air.anim, "tornado-anim")
