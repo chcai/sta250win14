@@ -1,6 +1,7 @@
-airports-anim contains the animated map index.html. The entire folder is needed to view index.html, which is compatible with Firefox, but not Chrome or Internet Explorer.
+maps.R creates the basic svg map.
 
-The plots folder contains all the necessary plots for airports.svg. Please have this in the same directory as airports.svg.
+plots.R creates the individual plots which are linked to the airports in airports.svg.
 
-The tex folder contains the report.
+svg.R adds tooltips and links to the basic svg map created in maps.R.
 
+animint.R creates the folder airports-anim which contains the animated map index.html.
