@@ -34,21 +34,21 @@
 "aes": {
  "x": "long",
 "y": "lat",
-"showSelected": "carrier",
-"colour": "colors" 
+"showSelected": "carriers",
+"colour": "my.colors" 
 },
 "params": {
  "na.rm": false,
 "size":      4 
 },
 "update": {
- "showSelected": "carrier" 
+ "showSelected": "carriers" 
 },
 "subord": [
  "showSelected" 
 ],
 "subvars": {
- "showSelected": "carrier" 
+ "showSelected": "carriers" 
 },
 "classed": "geom2_point_map",
 "types": {
@@ -68,13 +68,13 @@
 "aes": {
  "xmin": "xmin",
 "xmax": "xmax",
-"clickSelects": "carrier" 
+"clickSelects": "carriers" 
 },
 "params": {
  "alpha":    0.5 
 },
 "update": {
- "clickSelects": "carrier" 
+ "clickSelects": "carriers" 
 },
 "subord": [],
 "subvars": [],
@@ -92,7 +92,7 @@
  "geom": "line",
 "data": "geom4_line_ts.csv",
 "aes": {
- "x": "carrier",
+ "x": "carriers",
 "y": "delays" 
 },
 "params": [],
@@ -109,7 +109,7 @@
 } 
 },
 "selectors": {
- "carrier": {
+ "carriers": {
  "selected": 1,
 "subset": [
  "geom2_point_map",
@@ -150,10 +150,10 @@
 "yticks": true 
 },
 "legend": {
- "colors": {
+ "my.colors": {
  "guide": "legend",
 "geoms": "point",
-"title": "colors",
+"title": "my.colors",
 "entries": [
  {
  "pointcolour": "#BEBEBE",
@@ -206,15 +206,16 @@
 "y": [ 0.0049183, 0.23638, 0.46784, 0.6993, 0.93076 ],
 "ylab": [ "5.0", "7.5", "10.0", "12.5", "15.0" ],
 "yrange": [ 4.9469, 15.748 ],
-"yname": "Mean Departure Delay",
+"yname": "Mean Departure Delay (Mins)",
 "yline": true,
 "yticks": true 
 },
+"title": "Overall Departure Delays by Carrier",
 "legend": {} 
 } 
 },
 "time": {
- "variable": "carrier",
+ "variable": "carriers",
 "ms":   5000,
 "sequence": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" ] 
 } 

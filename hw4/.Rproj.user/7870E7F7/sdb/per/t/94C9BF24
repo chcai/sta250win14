@@ -1,12 +1,12 @@
 {
-    "contents" : "library('SVGAnnotation')\n\nload('dat2.rda')\nplots = list.files('plots')\n\ndoc = xmlParse(\"airports2.svg\")\np = getPlotPoints(doc)\n\nlapply(1:30, function(i) \n  addToolTips(p[[169+i]], \n              paste0(airports$iata[i], ' (', \n                     airports$city[i], ', ', airports$state[i], \n                     ')'), \n              addArea = TRUE))\nlapply(1:30, function(i) \n  addLink(p[[169+i]], paste0('plots/', plots[i])))\n\nsaveXML(doc, 'airports3.svg')\n\n# op <- par(bg = \"thistle\")\n# svg(\"/tmp/raster.svg\")\n# plot(c(100, 250), c(300, 450), type = \"n\", xlab = \"\", ylab = \"\")\n# image <- as.raster(matrix(0:1, ncol = 5, nrow = 3))\n# rasterImage(image, 100, 300, 150, 350, interpolate = FALSE)\n# rasterImage(image, 100, 400, 150, 450)\n# rasterImage(image, 200, 300, 200 + xinch(.5), 300 + yinch(.3), interpolate = FALSE)\n# rasterImage(image, 200, 400, 250, 450, angle = 15, interpolate = FALSE)\n# dev.off()\n",
+    "contents" : "library('SVGAnnotation')\n\nplots = list.files('plots')\n\ndoc = xmlParse(\"airports.svg\")\np = getPlotPoints(doc)\n\nlapply(1:length(big.airports), function(i) \n  addToolTips(p[[169+i]], \n              paste0(airports$iata[i], ' (', \n                     airports$city[i], ', ', airports$state[i], \n                     ')'), \n              addArea = TRUE))\nlapply(1:length(big.airports), function(i) \n  addLink(p[[169+i]], paste0('plots/', plots[i])))\n\nsaveXML(doc, 'airports.svg')\n",
     "created" : 1394762830711.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "495124766",
+    "hash" : "3002679861",
     "id" : "94C9BF24",
-    "lastKnownWriteTime" : 1394741833,
+    "lastKnownWriteTime" : 1395095873,
     "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/svg.R",
     "properties" : {
         "tempName" : "Untitled1"

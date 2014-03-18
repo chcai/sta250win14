@@ -1,12 +1,12 @@
 {
-    "contents" : "tmp = split(dat, dat$Origin, drop = TRUE)\n\nsapply(1:30, function(i) \n{\n  med = by(tmp[[i]]$ArrDelay, tmp[[i]]$UniqueCarrier, \n           median, na.rm = TRUE)\n  med = med[!is.na(med)]\n  png(paste0('plots/', names(tmp)[i], '.png'))\n  plot(med, \n       type = 'b', \n       ylim = c(-10, 20), \n       xaxt = 'n', \n       xlab = 'Airline', \n       ylab = 'Median Arrival Delay (Mins)', \n       main = paste0('Flights from ', names(tmp)[i]))\n  axis(1, at = c(1:length(med)), \n       labels = attributes(med)$dimnames[[1]])\n  dev.off()\n})",
+    "contents" : "levels(dat$UniqueCarrier)[8] = 'PA'\n# tmp = split(dat, dat$Origin)\n# tmp2 = split(dat, dat$Dest)\n\nsapply(1:length(big.airports), function(i) \n{\n  med = by(tmp[[i]]$ArrDelay, tmp[[i]]$UniqueCarrier, \n           median, na.rm = TRUE)\n  med = med[!is.na(med)]\n  med.dest = by(tmp2[[i]]$ArrDelay, tmp2[[i]]$UniqueCarrier, \n           median, na.rm = TRUE)\n  med.dest = med.dest[!is.na(med.dest)]\n  png(paste0('plots/', names(tmp)[i], '.png'))\n  plot(med, \n       type = 'b', \n       ylim = c(-10, 35), \n       xaxt = 'n', \n       xlab = 'Carrier', \n       ylab = 'Median Arrival Delay (Mins)', \n       main = 'Median Arrival Delays by Carrier')\n  points(med.dest, type = 'b', col = 'blue')\n  axis(1, at = c(1:length(med)), \n       labels = attributes(med)$dimnames[[1]])\n  legend('topleft', \n         legend = c(paste0('Flights from ', names(tmp)[i]), \n                    paste0('Flights to ', names(tmp)[i])), \n         col = c('black', 'blue'), \n         lty = 1)\n  dev.off()\n})\n",
     "created" : 1394762824917.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "70433571",
+    "hash" : "2818641151",
     "id" : "1F176827",
-    "lastKnownWriteTime" : 1394593801,
+    "lastKnownWriteTime" : 1395104997,
     "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/plots.R",
     "properties" : {
         "tempName" : "Untitled1"

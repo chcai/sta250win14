@@ -3,28 +3,20 @@ library('maps')
 
 load('dat2.rda')
 
-# dat = dat[{dat$Month == 12 & dat$Origin == 'SFO'}, ]
-# dep.dels = 
-#   by(dat$DepDelay, list(dat$DayofMonth, dat$Dest), 
-#      mean, na.rm = TRUE)
-
 dep.dels = 
   by(dat$DepDelay, list(dat$Origin, dat$UniqueCarrier), 
      mean, na.rm = TRUE)
-dep.dels = matrix(dep.dels, nrow = 30)
+dep.dels = matrix(dep.dels, nrow = length(big.airports))
 
-big.airports = sort(big.airports)
 carriers = sort(as.character(unique(dat$UniqueCarrier)))
-carriers[8] = 'PA'
 
-my.colors = matrix(nrow = 30, ncol = 13)
-for(j in 1:13)
-  for(i in 1:30) 
+my.colors = matrix(nrow = length(big.airports), 
+                   ncol = length(carriers))
+for(j in 1:length(carriers))
+  for(i in 1:length(big.airports)) 
   {
     if(is.na(dep.dels[i, j])) 
-    {
-      my.colors[i, j] = 'NA'
-    } else 
+      my.colors[i, j] = 'NA' else 
     {
       if(dep.dels[i, j] <= 10) my.colors[i, j] = '< 10 mins'
       if(dep.dels[i, j] > 10 && dep.dels[i, j] <= 20) 
@@ -35,20 +27,22 @@ for(j in 1:13)
 
 to.plot = 
   as.data.frame(
-    matrix(
-      c(rep(airports$long, 13), rep(airports$lat, 13)), ncol = 2))
-to.plot = cbind(to.plot, as.vector(my.colors), rep(1:13, each = 30))
-names(to.plot) = c('long', 'lat', 'colors', 'carrier')
+    matrix(c(rep(airports$long, length(carriers)), 
+             rep(airports$lat, length(carriers))), 
+           ncol = 2))
+to.plot = cbind(to.plot, as.vector(my.colors), 
+                rep(1:length(carriers), each = length(big.airports)))
+names(to.plot) = c('long', 'lat', 'my.colors', 'carriers')
 
-USpolygons <- map_data("state")
+USpolygons = map_data('state')
 USpolygons$state = 
   state.abb[match(USpolygons$region, tolower(state.name))]
 
 map <- ggplot() + 
   geom_polygon(aes(x = long, y = lat, group = group), 
                data = USpolygons, fill = "white", colour = "grey") + 
-  geom_point(aes(x = long, y = lat, showSelected = carrier, 
-                 colour = colors), 
+  geom_point(aes(x = long, y = lat, showSelected = carriers, 
+                 colour = my.colors), 
              data = to.plot, size = 4) + 
   scale_color_manual(
     values = 
@@ -58,22 +52,23 @@ map <- ggplot() +
 all.dels = 
   by(dat$DepDelay, dat$UniqueCarrier, mean, na.rm = TRUE)
 to.plot.ts = 
-  as.data.frame(cbind(1:13, all.dels))
-names(to.plot.ts) = c('carrier', 'delays')
+  as.data.frame(cbind(1:length(carriers), all.dels))
+names(to.plot.ts) = c('carriers', 'delays')
 
 ts <- ggplot() + 
-  make_tallrect(to.plot.ts, 'carrier') + 
-  geom_line(aes(carrier, delays),
+  make_tallrect(to.plot.ts, 'carriers') + 
+  geom_line(aes(carriers, delays),
             data = to.plot.ts) + 
   xlab('Carrier') + 
-  ylab('Mean Departure Delay') + 
-  scale_x_discrete(breaks = 1:13, 
-                   labels = carriers)
+  ylab('Mean Departure Delay (Mins)') + 
+  scale_x_discrete(breaks = 1:length(carriers), 
+                   labels = carriers) + 
+  ggtitle('Overall Departure Delays by Carrier')
 
-time <- list(variable = 'carrier', ms = 5000)
+time <- list(variable = 'carriers', ms = 5000)
 
 air.anim <- list(map = map, ts = ts, time = time, 
                  width = list(map = 970, ts = 400), 
                  height = list(400))
 
-gg2animint(air.anim, "tornado-anim")
+gg2animint(air.anim, "airports-anim")

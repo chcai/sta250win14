@@ -1,12 +1,12 @@
 {
-    "contents" : "library('maps')\n\nload('dat2.rda')\n\nsvg('airports2.svg')\nmap('state', bg = 'white', col = 8)\npoints(airports$long, airports$lat, col = 'blue', pch = 16)\nsapply(1:nrow(airports2), function(i) \n  lines(c(airports$long[airports$iata == 'SFO'], \n          airports2$long[i]), \n        c(airports$lat[airports$iata == 'SFO'], \n          airports2$lat[i]), \n       col = cols[i]))\n# sapply(1:29, function(i) \n#   sapply((i+1):30, function(j) \n#     lines(c(airports$long[i], airports$long[j]), \n#           c(airports$lat[i], airports$lat[j]))))\ndev.off()",
+    "contents" : "library('maps')\n\n# dat = read.csv('1989.csv')\n# save(dat, file = 'dat.rda')\n\n# load('dat.rda')\n# airports = read.csv('airports.csv')\n# big.airports = \n#   attributes(\n#     sort(\n#       table(dat$Dest), decreasing = TRUE))$dimnames[[1]][1:30]\n# big.airports = sort(big.airports)\n# airports = airports[airports$iata %in% big.airports,]\n# dat = dat[dat$Origin %in% big.airports & \n#             dat$Dest %in% big.airports, \n#           -c(1,11,14,20:21,23,25:29)]\n# dat = droplevels(dat)\n# levels(dat$UniqueCarrier)[8] = 'PA'\n# save(dat, airports, big.airports, file = 'dat2.rda')\n\nload('dat2.rda')\n\n# svg('airports.svg')\n# map('state', bg = 'white', col = 'grey')\n# points(airports$long, airports$lat, col = 'blue', pch = 16)\n# dev.off()\n",
     "created" : 1394762822340.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2624984030",
+    "hash" : "4264197995",
     "id" : "AC323052",
-    "lastKnownWriteTime" : 1394755371,
+    "lastKnownWriteTime" : 1395105160,
     "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/maps.R",
     "properties" : {
         "tempName" : "Untitled1"
