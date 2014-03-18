@@ -1,15 +1,23 @@
 library('animint')
 library('maps')
 
+## load the data saved in maps.R
 load('dat2.rda')
 
+## get the mean departure delays by origin airport and carrier. 
+## put delays into matrix form for ease
 dep.dels = 
   by(dat$DepDelay, list(dat$Origin, dat$UniqueCarrier), 
      mean, na.rm = TRUE)
 dep.dels = matrix(dep.dels, nrow = length(big.airports))
 
+## get carriers in alphabetical order
 carriers = sort(as.character(unique(dat$UniqueCarrier)))
 
+## misnomer; should be called my.labels. 
+## the airports on the map will be color coded 
+## by mean departure delays. 
+## these will serve as labels for the colors.
 my.colors = matrix(nrow = length(big.airports), 
                    ncol = length(carriers))
 for(j in 1:length(carriers))
@@ -25,6 +33,7 @@ for(j in 1:length(carriers))
     }
   }
 
+## data frame to be used for plotting
 to.plot = 
   as.data.frame(
     matrix(c(rep(airports$long, length(carriers)), 
@@ -34,6 +43,7 @@ to.plot = cbind(to.plot, as.vector(my.colors),
                 rep(1:length(carriers), each = length(big.airports)))
 names(to.plot) = c('long', 'lat', 'my.colors', 'carriers')
 
+## for plotting US map
 USpolygons = map_data('state')
 USpolygons$state = 
   state.abb[match(USpolygons$region, tolower(state.name))]
@@ -49,6 +59,8 @@ map <- ggplot() +
       c('NA' = 'grey', '< 10 mins' = 'green', 
         '10 - 20 mins' = 'yellow', '> 20 mins' = 'red'))
 
+## every five seconds, changes carrier; 
+## so carrier is the 'time' variable
 all.dels = 
   by(dat$DepDelay, dat$UniqueCarrier, mean, na.rm = TRUE)
 to.plot.ts = 

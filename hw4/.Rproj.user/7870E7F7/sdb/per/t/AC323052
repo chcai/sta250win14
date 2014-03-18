@@ -1,12 +1,12 @@
 {
-    "contents" : "library('maps')\n\n# dat = read.csv('1989.csv')\n# save(dat, file = 'dat.rda')\n\n# load('dat.rda')\n# airports = read.csv('airports.csv')\n# big.airports = \n#   attributes(\n#     sort(\n#       table(dat$Dest), decreasing = TRUE))$dimnames[[1]][1:30]\n# big.airports = sort(big.airports)\n# airports = airports[airports$iata %in% big.airports,]\n# dat = dat[dat$Origin %in% big.airports & \n#             dat$Dest %in% big.airports, \n#           -c(1,11,14,20:21,23,25:29)]\n# dat = droplevels(dat)\n# levels(dat$UniqueCarrier)[8] = 'PA'\n# save(dat, airports, big.airports, file = 'dat2.rda')\n\nload('dat2.rda')\n\n# svg('airports.svg')\n# map('state', bg = 'white', col = 'grey')\n# points(airports$long, airports$lat, col = 'blue', pch = 16)\n# dev.off()\n",
+    "contents" : "library('maps')\n\n## save the data so we don't need to read it in everytime. \n# get the 30 biggest airports; \n# sort them for ease. \n# subset the data; \n# we only want the rows with the 30 biggest airports; \n# and some columns are all NA'S, so get rid of them. \n# drop the levels that aren't present anymore. \n# change carrier 'PA (1)' to 'PA'; \n# there is no 'PA', 'PA (2)', or anything similar. \n## save these objects for ease.\ndat = read.csv('1989.csv')\nsave(dat, file = 'dat.rda')\n\nload('dat.rda')\nairports = read.csv('airports.csv')\nbig.airports = \n  attributes(\n    sort(\n      table(dat$Dest), decreasing = TRUE))$dimnames[[1]][1:30]\nbig.airports = sort(big.airports)\nairports = airports[airports$iata %in% big.airports,]\ndat = dat[dat$Origin %in% big.airports & \n            dat$Dest %in% big.airports, \n          -c(1,11,14,20:21,23,25:29)]\ndat = droplevels(dat)\nlevels(dat$UniqueCarrier)[8] = 'PA'\nsave(dat, airports, big.airports, file = 'dat2.rda')\n\nload('dat2.rda')\n\n## make svg plot of US map with the 30 airports\nsvg('airports.svg')\nmap('state', bg = 'white', col = 'grey')\npoints(airports$long, airports$lat, col = 'blue', pch = 16)\ndev.off()\n",
     "created" : 1394762822340.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "4264197995",
+    "hash" : "2394797523",
     "id" : "AC323052",
-    "lastKnownWriteTime" : 1395105160,
+    "lastKnownWriteTime" : 1395110782,
     "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/maps.R",
     "properties" : {
         "tempName" : "Untitled1"

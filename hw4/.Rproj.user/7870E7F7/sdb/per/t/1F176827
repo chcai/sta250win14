@@ -1,12 +1,12 @@
 {
-    "contents" : "levels(dat$UniqueCarrier)[8] = 'PA'\n# tmp = split(dat, dat$Origin)\n# tmp2 = split(dat, dat$Dest)\n\nsapply(1:length(big.airports), function(i) \n{\n  med = by(tmp[[i]]$ArrDelay, tmp[[i]]$UniqueCarrier, \n           median, na.rm = TRUE)\n  med = med[!is.na(med)]\n  med.dest = by(tmp2[[i]]$ArrDelay, tmp2[[i]]$UniqueCarrier, \n           median, na.rm = TRUE)\n  med.dest = med.dest[!is.na(med.dest)]\n  png(paste0('plots/', names(tmp)[i], '.png'))\n  plot(med, \n       type = 'b', \n       ylim = c(-10, 35), \n       xaxt = 'n', \n       xlab = 'Carrier', \n       ylab = 'Median Arrival Delay (Mins)', \n       main = 'Median Arrival Delays by Carrier')\n  points(med.dest, type = 'b', col = 'blue')\n  axis(1, at = c(1:length(med)), \n       labels = attributes(med)$dimnames[[1]])\n  legend('topleft', \n         legend = c(paste0('Flights from ', names(tmp)[i]), \n                    paste0('Flights to ', names(tmp)[i])), \n         col = c('black', 'blue'), \n         lty = 1)\n  dev.off()\n})\n",
+    "contents" : "## split the data based on origin and dest airports\ntmp = split(dat, dat$Origin)\ntmp2 = split(dat, dat$Dest)\n\n## separate plot for each airport\nsapply(1:length(big.airports), function(i) \n{\n  ## get median arrival delays by carrier\n  med = by(tmp[[i]]$ArrDelay, tmp[[i]]$UniqueCarrier, \n           median, na.rm = TRUE)\n  ## get rid of NA's\n  med = med[!is.na(med)]\n  ## repeat for dest\n  med.dest = by(tmp2[[i]]$ArrDelay, tmp2[[i]]$UniqueCarrier, \n           median, na.rm = TRUE)\n  med.dest = med.dest[!is.na(med.dest)]\n  ## plot median arrival delays. \n  ## the plots will go to dir 'plots'\n  png(paste0('plots/', names(tmp)[i], '.png'))\n  plot(med, type = 'b', ylim = c(-10, 35), xaxt = 'n', \n       xlab = 'Carrier', \n       ylab = 'Median Arrival Delay (Mins)', \n       main = 'Median Arrival Delays by Carrier')\n  points(med.dest, type = 'b', col = 'blue')\n  ## add my own x axis; \n  ## add carrier names for tick labels\n  axis(1, at = c(1:length(med)), \n       labels = attributes(med)$dimnames[[1]])\n  ## add legend\n  legend('topleft', \n         legend = c(paste0('Flights from ', names(tmp)[i]), \n                    paste0('Flights to ', names(tmp)[i])), \n         col = c('black', 'blue'), \n         lty = 1)\n  dev.off()\n})\n",
     "created" : 1394762824917.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2818641151",
+    "hash" : "92519664",
     "id" : "1F176827",
-    "lastKnownWriteTime" : 1395104997,
+    "lastKnownWriteTime" : 1395111405,
     "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/plots.R",
     "properties" : {
         "tempName" : "Untitled1"

@@ -1,12 +1,12 @@
 {
-    "contents" : "library('SVGAnnotation')\n\nplots = list.files('plots')\n\ndoc = xmlParse(\"airports.svg\")\np = getPlotPoints(doc)\n\nlapply(1:length(big.airports), function(i) \n  addToolTips(p[[169+i]], \n              paste0(airports$iata[i], ' (', \n                     airports$city[i], ', ', airports$state[i], \n                     ')'), \n              addArea = TRUE))\nlapply(1:length(big.airports), function(i) \n  addLink(p[[169+i]], paste0('plots/', plots[i])))\n\nsaveXML(doc, 'airports.svg')\n",
+    "contents" : "library('SVGAnnotation')\n\n## load the data saved in maps.R\nload('dat2.rda')\n\nplots = list.files('plots')\n\n## parse the svg file \n## and get the plot points\ndoc = xmlParse(\"airports.svg\")\np = getPlotPoints(doc)\n\n## for each airport, \n## add tooltip: airport code (city, state), \n## and link to each airport to the plots created in plots.R. \n## tooltips will display when mousing over the airports\nlapply(1:length(big.airports), function(i) \n  addToolTips(p[[169+i]], \n              paste0(airports$iata[i], ' (', \n                     airports$city[i], ', ', airports$state[i], \n                     ')'), \n              addArea = TRUE))\nlapply(1:length(big.airports), function(i) \n  addLink(p[[169+i]], paste0('plots/', plots[i])))\n\nsaveXML(doc, 'airports.svg')\n",
     "created" : 1394762830711.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3002679861",
+    "hash" : "2439495190",
     "id" : "94C9BF24",
-    "lastKnownWriteTime" : 1395095873,
+    "lastKnownWriteTime" : 1395111744,
     "path" : "C:/Users/Christine/Google Drive/GitHub/sta250win14/hw4/svg.R",
     "properties" : {
         "tempName" : "Untitled1"
