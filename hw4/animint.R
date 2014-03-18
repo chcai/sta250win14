@@ -41,7 +41,7 @@ to.plot =
            ncol = 2))
 to.plot = cbind(to.plot, as.vector(my.colors), 
                 rep(1:length(carriers), each = length(big.airports)))
-names(to.plot) = c('long', 'lat', 'my.colors', 'carriers')
+names(to.plot) = c('long', 'lat', 'Delays', 'carriers')
 
 ## for plotting US map
 USpolygons = map_data('state')
@@ -52,7 +52,7 @@ map <- ggplot() +
   geom_polygon(aes(x = long, y = lat, group = group), 
                data = USpolygons, fill = "white", colour = "grey") + 
   geom_point(aes(x = long, y = lat, showSelected = carriers, 
-                 colour = my.colors), 
+                 colour = Delays), 
              data = to.plot, size = 4) + 
   scale_color_manual(
     values = 
@@ -65,11 +65,11 @@ all.dels =
   by(dat$DepDelay, dat$UniqueCarrier, mean, na.rm = TRUE)
 to.plot.ts = 
   as.data.frame(cbind(1:length(carriers), all.dels))
-names(to.plot.ts) = c('carriers', 'delays')
+names(to.plot.ts) = c('carriers', 'Delays')
 
 ts <- ggplot() + 
   make_tallrect(to.plot.ts, 'carriers') + 
-  geom_line(aes(carriers, delays),
+  geom_line(aes(carriers, Delays),
             data = to.plot.ts) + 
   xlab('Carrier') + 
   ylab('Mean Departure Delay (Mins)') + 

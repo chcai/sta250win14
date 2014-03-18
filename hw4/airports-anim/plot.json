@@ -35,7 +35,7 @@
  "x": "long",
 "y": "lat",
 "showSelected": "carriers",
-"colour": "my.colors" 
+"colour": "Delays" 
 },
 "params": {
  "na.rm": false,
@@ -93,7 +93,7 @@
 "data": "geom4_line_ts.csv",
 "aes": {
  "x": "carriers",
-"y": "delays" 
+"y": "Delays" 
 },
 "params": [],
 "update": "",
@@ -150,10 +150,10 @@
 "yticks": true 
 },
 "legend": {
- "my.colors": {
+ "Delays": {
  "guide": "legend",
 "geoms": "point",
-"title": "my.colors",
+"title": "Delays",
 "entries": [
  {
  "pointcolour": "#BEBEBE",
