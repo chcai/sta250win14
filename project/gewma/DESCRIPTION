@@ -1,0 +1,9 @@
+Package: gewma
+Type: Package
+Title: Generalized Exponentially Weighted Moving Averages
+Version: 1.0
+Date: 2014-03-19
+Author: Christine Cai
+Maintainer: Christine Cai <chcai@ucdavis.edu>
+Description: Fit an univariate time series using generalized exponentially weighted moving averages; includes predict function.
+License: GPL-2
